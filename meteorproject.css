@@ -1,0 +1,16 @@
+/* CSS declarations go here */
+
+
+bod{
+font-family: serif;
+    background: red
+}
+h1{
+font-family:serif;
+color: blue
+    
+}
+.test{
+border-bottom-width: thick;
+    
+}

@@ -1,0 +1,152 @@
+<head>
+  <title>Contacts</title>
+</head>
+
+<body>
+    {{> navbar}}
+    {{#if currentUser}}
+ <div class="container">
+<header>
+   <meta name="viewport" content="width=device-width,inital-scale=1,maximum-scale=1,user-scalable=no">
+    <h1>Contacts</h1>
+</header>     
+     {{> contacts}}
+     {{> new_contact}}
+     
+ </div>
+    {{else}}
+    {{>logged_out}}
+    {{/if}}
+</body>
+<template name="navbar">
+   <div class="panel-heading">
+       <div class="row tex-right">
+          
+           <div class="col-md-12 tex-right">
+               
+           </div>
+       </div>
+     <div>
+     
+     </div>  
+   </div>
+    <nav class="navbar navbar-default">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-exmple-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Contact Book</a>
+        </div>
+        <div class="collapsed navbar-collapse " id="bs-exmple-navbar-collapse-1">   <div class="panel-heading">
+            <div class="row text-right">
+                <div class="col-md-6">
+                   <form class="navbar-from navbar-left" role="search">
+                        <div class="form-group">
+                        <input type="text" class="form-control searchbox" name="query" placeholder="Search">
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6 tex-right">
+                <ul class="nav navbar-nav navbar-right">
+                    {{>loginButtons}}
+                    
+                </ul>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newContactModal">
+                   Add new Contact
+               </button>
+                  <button type="button" class="btn btn-danger delete">Delete</button>
+                    
+                    
+                </div>
+            </div>
+            
+        </div> 
+            <ul class="nav navbar-nav">
+            
+                <li class="active"><a href="#">Contacts</a></li>
+                <li><a href="#">Appointments</a></li>
+            </ul>
+            <ul class="nav navbar-nav" >
+                <li><a href="#">Login</a></li>
+            </ul>
+        </div>
+        
+    </nav>
+    
+</template>
+<template name="contacts">
+ <div class="panel panel-default">
+     <div class="panel-heading">Contacts</div>
+     <table class="table table-striped">
+         <thead>
+            <tr>
+             <th>Name</th>
+             <th>Number</th>
+             <th>Email</th>
+             <th>Address</th>
+             </tr>
+         </thead>
+         <tbody>
+             {{#each contacts}}
+             {{> contact}}
+             {{/each}}
+         </tbody>
+         
+     </table>
+ </div>
+</template>
+<template name="contact">
+   <th></th>
+    <tr> <td><input type="checkbox" class="toggle-checked"></td>
+        <td>{{name}}</td>
+        <td>{{number}}</td>
+        <td>{{email}}</td>
+        <td>{{address}}</td>
+    </tr>
+    
+</template>
+<template name="new_contact">
+   <div class="modal fade" id="newContactModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-lable="Close">
+                    <span aria-hidden="ture">&times;</span>
+                </button><h4 class="modal-title">New Contacts</h4>
+            </div>
+            <form class="contactForm">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input class="form-control" name="name" type="text" placeholder="Name">
+                    </div>
+                     <div class="form-group">
+                        <input class="form-control" name="number" type="text" placeholder="Number">
+                    </div>
+                     <div class="form-group">
+                        <input class="form-control" name="email" type="text" placeholder="Email">
+                    </div>
+                     <div class="form-group">
+                        <input class="form-control" name="address" type="text" placeholder="Address">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save contact</button>
+                    </div>
+                </div>
+            </form>
+            
+        </div>
+        
+    </div>
+    </div>
+</template>
+<template name="logged_out">
+   <div class="jumbotron text-center">
+       <h1>Welcome to the Contacts Book</h1>
+       
+   </div>
+    
+    
+</template>
